@@ -9,6 +9,7 @@ class OrderOut extends Model
     protected $table = "orderout";
     protected $guarded = [];
     public $timestamps = false;
+    public $primaryKey = "OrdOutID";
 
     public function customer() {
         return $this->belongsTo(Customer::class, "CusID", "CusID");

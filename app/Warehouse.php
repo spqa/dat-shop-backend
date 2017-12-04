@@ -11,10 +11,10 @@ class Warehouse extends Model
     public $timestamps = false;
 
     public function parcel() {
-        return $this->belongsTo(Parcel::class, "ParID");
+        return $this->belongsTo(Parcel::class, "ParID", "ParID");
     }
 
     public function product() {
-        return $this->belongsTo(Parcel::class, "ParID");
+        return $this->belongsTo(Product::class, "ProID", "ProID");
     }
 }

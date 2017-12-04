@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderOutDetail extends Model
 {
     protected $table = "orderoutdetail";
-    protected $guarded = [];
+    protected $fillable = ["OrdOutID", "ProID", "ParID", "Quantity"];
     public $timestamps = false;
 
     public function orderOut() {

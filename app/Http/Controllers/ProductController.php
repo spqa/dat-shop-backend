@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        return Product::with(["category", "warehouses"])->paginate(10);
+        return Product::with(["category", "warehouses", "warehouses.parcel"])->paginate(10);
     }
 
     public function create(Request $request) {
@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        return Product::findOrFail($id);
+        return Product::with(["category", "warehouses", "warehouses.parcel"])->findOrFail($id);
     }
 
     public function update($id,Request $request)
@@ -36,6 +36,7 @@ class ProductController extends Controller
         $result = new ResultMessage();
         try {
             $item = Product::find($id);
+//            $warehouse = Warehouse::find($request[""]);
             $item->update($request->all());
             $result->setError(false);
             $result->setMessage("Update successfully!");

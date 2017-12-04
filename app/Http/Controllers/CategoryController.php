@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\ResponseResult\ResultMessage;
-use App\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -66,5 +65,10 @@ class CategoryController extends Controller
         }
 
         return response()->json($result);
+    }
+
+    public function products($id)
+    {
+        return Category::findOrFail($id)->products()->get("ProID");
     }
 }

@@ -13,15 +13,15 @@ class Product extends Model
     protected $keyType = "string";
 
     public function orderOutDetail() {
-        return $this->belongsTo(OrderOutDetail::class, "ParID", "ParID");
+        return $this->hasMany(OrderOutDetail::class, "ProID", "ProID");
     }
 
     public function orderInDetail() {
-        return $this->belongsTo(OrderInDetail::class, "ParID", "ParID");
+        return $this->hasMany(OrderInDetail::class, "ProID", "ProID");
     }
 
     public function warehouses() {
-        return $this->belongsTo(Warehouse::class, "ParID", "ParID");
+        return $this->hasMany(Warehouse::class, "ProID", "ProID");
     }
 
     public function category() {
